@@ -222,13 +222,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-# Construct the full file path
-desktop_path = r'C:\Users\celes\Desktop'
-file_name = 'LA_County_COVID_Cases_20231018.csv'
-full_file_path = os.path.join(desktop_path, file_name)
 
-# Load your COVID-19 data into a Pandas DataFrame
-data = pd.read_csv(full_file_path)
 
 # Convert the 'Date' column to datetime format
 data['date'] = pd.to_datetime(data['date'])
@@ -281,9 +275,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 import streamlit as st
 
-# Load COVID-19 data with features for severity classification
-file_path = r'C:\Users\celes\Desktop\LA_County_COVID_Cases_20231018.csv'
-df = pd.read_csv(file_path)
 
 # Assuming 'new_cases' is the target variable
 target_variable = 'new_cases'
