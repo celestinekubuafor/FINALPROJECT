@@ -9,11 +9,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load data
-desktop_path = r'C:\Users\celes\Desktop'
-file_name = 'LA_County_COVID_Cases_20231018.csv'
-file_path = f'{desktop_path}\\{file_name}'
-df = pd.read_csv(file_path)
 
 # Display DataFrame and info
 st.write("## Data Overview")
