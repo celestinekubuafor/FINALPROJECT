@@ -13,36 +13,35 @@ import streamlit as st
 
 
 # My file path to your CSV file on the desktop using a raw string literal
-desktop_path = r'C:\Users\celes\Desktop'
-file_name = 'LA_County_COVID_Cases_20231018.csv'
+
+file_name = 'cleaned_data.csv'
 
 
 # In[5]:
 
 
 # Combine the desktop path and file name to get the full file path
-file_path = f'{desktop_path}\\{file_name}'  # You can also use os.path.join for path manipulation
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv(file_path)
+df = pd.read_csv(file_name)
 
 
 # In[6]:
 
 
-print(df.head())
+# print(df.head())
 
 
 # In[7]:
 
 
-print(df.columns)
+st.write(df.columns)
 
 
 # In[8]:
 
 
-print(df.info())
+# print(df.info())
 
 
 # In[9]:
@@ -57,18 +56,19 @@ df = df.fillna(0) # fill NA with 0
 
 df[df.duplicated()] # check duplicates
 df = df.drop_duplicates() # drop duplicates
+st.dataframe(df)
 
 
 # In[11]:
 
 
-print(df.head)
+# print(df.head)
 
 
 # In[13]:
 
 
-print(df.describe())
+st.write(df.describe())
 
 
 # In[14]:
@@ -78,8 +78,7 @@ correlation_matrix = df.corr()
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
 plt.title('Correlation Matrix')
-plt.show()
-
+st.pyplot(plt)
 
 # This calculates the correlation matrix for numerical variables and creates a heatmap to visualize the correlation coefficients. It helps identify relationships between different features in the dataset. (which features has impact on new death cases?)
 
@@ -95,7 +94,7 @@ plt.show()
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import streamlit as st
 
 # Set up the Matplotlib figure size
 plt.figure(figsize=(12, 6))
@@ -117,7 +116,7 @@ plt.ylabel('Frequency')
 plt.legend()
 
 # Display the plot
-plt.show()
+st.pyplot(plt)
 
 
 # The histogram visualize the distribution of new COVID-19 cases against new deaths in LA County.
@@ -136,7 +135,7 @@ sns.scatterplot(data=df, x='new_state_cases', y='new_state_deaths', color='salmo
 plt.title('Scatter Plot of New State Cases vs. New State Deaths')
 plt.xlabel('New State Cases')
 plt.ylabel('New State Deaths')
-plt.show()
+st.pyplot(plt)
 
 
 # This scatter plot explore the relationship between the total state cases and the number of new deaths.
@@ -189,8 +188,8 @@ y_pred = model.predict(X_test)
 
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
-print(f'Mean Absolute Error: {mae}')
-print(f'R-squared: {r2}')
+st.write(f'Mean Absolute Error: {mae}')
+st.write(f'R-squared: {r2}')
 
 
 # Using mean absolute error (MAE) and R-squared metrics to evaluate the performance of the linear regression model on the test set and print the results.
@@ -221,6 +220,7 @@ pip install pandas matplotlib
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import streamlit as st
 
 # Construct the full file path
 desktop_path = r'C:\Users\celes\Desktop'
@@ -279,6 +279,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
+import streamlit as st
 
 # Load COVID-19 data with features for severity classification
 file_path = r'C:\Users\celes\Desktop\LA_County_COVID_Cases_20231018.csv'
@@ -304,11 +305,11 @@ y_pred = classifier.predict(X_test)
 
 # Display model accuracy
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Model Accuracy: {accuracy:.2%}')
+st.write(f'Model Accuracy: {accuracy:.2%}')
 
 # Display classification report
-print("Classification Report:")
-print(classification_report(y_test, y_pred))
+st.write("Classification Report:")
+st.write(classification_report(y_test, y_pred))
 
 
 # In[ ]:
