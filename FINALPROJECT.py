@@ -7,6 +7,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import streamlit as st
 
 
 # In[3]:
@@ -29,19 +30,19 @@ df = pd.read_csv("LA_County_COVID_Cases_20231018.csv")
 # In[6]:
 
 
-print(df.head())
+st.write(df.head())
 
 
 # In[7]:
 
 
-print(df.columns)
+st.write(df.columns)
 
 
 # In[8]:
 
 
-print(df.info())
+st.write(df.info())
 
 
 # In[9]:
@@ -61,13 +62,13 @@ df = df.drop_duplicates() # drop duplicates
 # In[11]:
 
 
-print(df.head)
+st.write(df.head)
 
 
 # In[13]:
 
 
-print(df.describe())
+st.write(df.describe())
 
 
 # In[14]:
@@ -188,8 +189,8 @@ y_pred = model.predict(X_test)
 
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
-print(f'Mean Absolute Error: {mae}')
-print(f'R-squared: {r2}')
+st.write(f'Mean Absolute Error: {mae}')
+st.write(f'R-squared: {r2}')
 
 
 # Using mean absolute error (MAE) and R-squared metrics to evaluate the performance of the linear regression model on the test set and print the results.
@@ -241,12 +242,12 @@ six_months_ago = pd.to_datetime('today') - pd.DateOffset(months=6)
 # Visualize the data
 plt.figure(figsize=(12, 8))
 
-plt.plot(data['date'], data['DailyCases_LA'], label='Daily Cases (LA)', linestyle='-', marker='o')
-plt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linestyle='-', marker='o')
+st.pyplot(plt.plot(data['date'], data['DailyCases_LA'], label='Daily Cases (LA)', linestyle='-', marker='o')
+st.pyplotplt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linestyle='-', marker='o')
 
 # Plot rolling averages for better trend visualization
 rolling_window = 7  # 7-day rolling average
-plt.plot(data['date'], data['DailyCases_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Cases (LA)', linestyle='--')
+plt.plot(data['date'], data['DailyCases_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Cases (LA)', linestyle='--'
 plt.plot(data['date'], data['DailyDeaths_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Deaths (LA)', linestyle='--')
 
 plt.title('Daily COVID-19 Cases and Deaths Over Time (Los Angeles County)')
@@ -255,7 +256,7 @@ plt.ylabel('Count')
 plt.legend()
 plt.grid(True)
 plt.xticks(rotation=45, ha='right')
-plt.show()
+st.pyplot(plt.show())
 
 
 # #The provided code generates a plot that visualizes the daily COVID-19 cases and deaths in Los Angeles County over time, along with their 7-day rolling averages. 
@@ -298,11 +299,11 @@ y_pred = classifier.predict(X_test)
 
 # Display model accuracy
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Model Accuracy: {accuracy:.2%}')
+st.write(f'Model Accuracy: {accuracy:.2%}')
 
 # Display classification report
-print("Classification Report:")
-print(classification_report(y_test, y_pred))
+st.title("Classification Report:")
+st.write(classification_report(y_test, y_pred))
 
 
 # In[ ]:
