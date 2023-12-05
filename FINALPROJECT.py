@@ -117,7 +117,7 @@ plt.ylabel('Frequency')
 plt.legend()
 
 # Display the plot
-plt.show()
+st.pyplot(plt.show())
 
 
 # The histogram visualize the distribution of new COVID-19 cases against new deaths in LA County.
@@ -136,7 +136,7 @@ sns.scatterplot(data=df, x='new_state_cases', y='new_state_deaths', color='salmo
 plt.title('Scatter Plot of New State Cases vs. New State Deaths')
 plt.xlabel('New State Cases')
 plt.ylabel('New State Deaths')
-plt.show()
+st.pyplot(plt.show())
 
 
 # This scatter plot explore the relationship between the total state cases and the number of new deaths.
@@ -151,7 +151,7 @@ plt.show()
 
 
 sns.pairplot(df[['new_cases', 'new_state_cases','new_deaths','new_state_deaths']])
-plt.show()
+st.pyplot(plt.show())
 
 
 # A pairplot provides a matrix of scatterplots for new cases(both LAcounty & state/California cases), offering a quick overview of their relationships
@@ -247,7 +247,7 @@ plt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linest
 
 # Plot rolling averages for better trend visualization
 rolling_window = 7  # 7-day rolling average
-plt.plot(data['date'], data['DailyCases_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Cases (LA)', linestyle='--'
+plt.plot(data['date'], data['DailyCases_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Cases (LA)', linestyle='--')
 plt.plot(data['date'], data['DailyDeaths_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Deaths (LA)', linestyle='--')
 
 plt.title('Daily COVID-19 Cases and Deaths Over Time (Los Angeles County)')
