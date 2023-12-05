@@ -220,13 +220,9 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Construct the full file path
-desktop_path = r'C:\Users\celes\Desktop'
-file_name = 'LA_County_COVID_Cases_20231018.csv'
-full_file_path = os.path.join(desktop_path, file_name)
 
 # Load your COVID-19 data into a Pandas DataFrame
-data = pd.read_csv(full_file_path)
+data = pd.read_csv("LA_County_COVID_Cases_202310.csv")
 
 # Convert the 'Date' column to datetime format
 data['date'] = pd.to_datetime(data['date'])
@@ -280,7 +276,7 @@ from sklearn.metrics import accuracy_score, classification_report
 
 # Load COVID-19 data with features for severity classification
 file_path = r'C:\Users\celes\Desktop\LA_County_COVID_Cases_20231018.csv'
-df = pd.read_csv(file_path)
+df = pd.read_csv("LA_County_COVID_Cases_202310.csv")
 
 # Assuming 'new_cases' is the target variable
 target_variable = 'new_cases'
