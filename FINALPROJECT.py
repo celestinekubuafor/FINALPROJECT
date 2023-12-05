@@ -233,10 +233,10 @@ data['DailyDeaths_LA'] = data['new_deaths'].diff()
 
 # Calculate the average daily percentage change over the past six months
 six_months_ago = pd.to_datetime('today') - pd.DateOffset(months=6)
-average_daily_percentage_change_LA = data[data['date'] >= six_months_ago]['DailyCases_LA'].pct_change().mean() * 100
+#average_daily_percentage_change_LA = data[data['date'] >= six_months_ago]['DailyCases_LA'].pct_change().mean() * 100
 
 # Print the results
-print(f"Average Daily Percentage Change in Cases (Los Angeles County): {average_daily_percentage_change_LA:.2f}%")
+#print(f"Average Daily Percentage Change in Cases (Los Angeles County): {average_daily_percentage_change_LA:.2f}%")
 
 # Visualize the data
 plt.figure(figsize=(12, 8))
