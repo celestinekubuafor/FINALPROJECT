@@ -98,26 +98,26 @@ import seaborn as sns
 
 
 # Set up the Matplotlib figure size
-plt.figure(figsize=(12, 6))
+fig = plt.figure(figsize=(12, 6))
 
 # Create the first histogram for 'new_cases'
-sns.histplot(data=df, x='new_cases', kde=True, bins=30, color='blue', label='New Cases')
+a = sns.histplot(data=df, x='new_cases', kde=True, bins=30, color='blue', label='New Cases')
 
 # Create the second histogram for 'new_deaths' and overlay it on the same plot
-sns.histplot(data=df, x='new_deaths', kde=True, bins=30, color='red', label='New Deaths')
+b = sns.histplot(data=df, x='new_deaths', kde=True, bins=30, color='red', label='New Deaths')
 
 # Set the title of the plot
-plt.title('Distribution of New Cases and New Deaths in LA')
+st.caption('Distribution of New Cases and New Deaths in LA')
 
 # Set labels for the x and y axes
 plt.xlabel('Counts')
 plt.ylabel('Frequency')
 
 # Display the legend to distinguish between 'new_cases' and 'new_deaths'
-plt.legend()
+st.write(plt.legend())
 
 # Display the plot
-st.pyplot(plt.show())
+st.pyplot(fig)
 
 
 # The histogram visualize the distribution of new COVID-19 cases against new deaths in LA County.
@@ -131,12 +131,12 @@ st.pyplot(plt.show())
 # In[18]:
 
 
-plt.figure(figsize=(12, 6))
-sns.scatterplot(data=df, x='new_state_cases', y='new_state_deaths', color='salmon')
+fig = plt.figure(figsize=(12, 6))
+c = sns.scatterplot(data=df, x='new_state_cases', y='new_state_deaths', color='salmon')
 plt.title('Scatter Plot of New State Cases vs. New State Deaths')
 plt.xlabel('New State Cases')
 plt.ylabel('New State Deaths')
-st.pyplot(plt.show())
+st.pyplot(fig)
 
 
 # This scatter plot explore the relationship between the total state cases and the number of new deaths.
@@ -149,9 +149,9 @@ st.pyplot(plt.show())
 
 # In[28]:
 
-
-sns.pairplot(df[['new_cases', 'new_state_cases','new_deaths','new_state_deaths']])
-st.pyplot(plt.show())
+fig = plt.figure(figsize=(10, 8))
+d = sns.pairplot(df[['new_cases', 'new_state_cases','new_deaths','new_state_deaths']])
+st.pyplot(fig)
 
 
 # A pairplot provides a matrix of scatterplots for new cases(both LAcounty & state/California cases), offering a quick overview of their relationships
@@ -240,23 +240,23 @@ six_months_ago = pd.to_datetime('today') - pd.DateOffset(months=6)
 #print(f"Average Daily Percentage Change in Cases (Los Angeles County): {average_daily_percentage_change_LA:.2f}%")
 
 # Visualize the data
-plt.figure(figsize=(12, 8))
+fig = plt.figure(figsize=(12, 8))
 
-plt.plot(data['date'], data['DailyCases_LA'], label='Daily Cases (LA)', linestyle='-', marker='o')
-plt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linestyle='-', marker='o')
+e = plt.plot(data['date'], data['DailyCases_LA'], label='Daily Cases (LA)', linestyle='-', marker='o')
+f = plt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linestyle='-', marker='o')
 
 # Plot rolling averages for better trend visualization
 rolling_window = 7  # 7-day rolling average
-plt.plot(data['date'], data['DailyCases_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Cases (LA)', linestyle='--')
-plt.plot(data['date'], data['DailyDeaths_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Deaths (LA)', linestyle='--')
+g = plt.plot(data['date'], data['DailyCases_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Cases (LA)', linestyle='--')
+h = plt.plot(data['date'], data['DailyDeaths_LA'].rolling(window=rolling_window).mean(), label=f'{rolling_window}-Day Avg Deaths (LA)', linestyle='--')
 
-plt.title('Daily COVID-19 Cases and Deaths Over Time (Los Angeles County)')
+st.title('Daily COVID-19 Cases and Deaths Over Time (Los Angeles County)')
 plt.xlabel('Date')
 plt.ylabel('Count')
 plt.legend()
 plt.grid(True)
 plt.xticks(rotation=45, ha='right')
-st.pyplot(plt.show())
+st.pyplot(fig)
 
 
 # #The provided code generates a plot that visualizes the daily COVID-19 cases and deaths in Los Angeles County over time, along with their 7-day rolling averages. 
