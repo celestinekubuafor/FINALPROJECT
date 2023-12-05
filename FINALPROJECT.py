@@ -74,10 +74,10 @@ print(df.describe())
 
 
 #correlation_matrix = df.corr()
-plt.figure(figsize=(10, 8))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
-plt.title('Correlation Matrix')
-plt.show()
+#plt.figure(figsize=(10, 8))
+#sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
+#plt.title('Correlation Matrix')
+#plt.show()
 
 
 # This calculates the correlation matrix for numerical variables and creates a heatmap to visualize the correlation coefficients. It helps identify relationships between different features in the dataset. (which features has impact on new death cases?)
