@@ -206,7 +206,6 @@ print(f'R-squared: {r2}')
 # In[1]:
 
 
-pip install pandas matplotlib
 
 
 # In[ ]:
