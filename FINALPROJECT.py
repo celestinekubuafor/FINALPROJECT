@@ -21,10 +21,9 @@ file_name = 'LA_County_COVID_Cases_20231018.csv'
 
 
 # Combine the desktop path and file name to get the full file path
-file_path = f'{desktop_path}\\{file_name}'  # You can also use os.path.join for path manipulation
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv(file_path)
+df = pd.read_csv("LA_County_COVID_Cases_20231018.csv")
 
 
 # In[6]:
