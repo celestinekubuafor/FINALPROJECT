@@ -73,7 +73,7 @@ print(df.describe())
 # In[14]:
 
 
-correlation_matrix = df.corr()
+#correlation_matrix = df.corr()
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
 plt.title('Correlation Matrix')
