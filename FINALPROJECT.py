@@ -242,8 +242,8 @@ six_months_ago = pd.to_datetime('today') - pd.DateOffset(months=6)
 # Visualize the data
 plt.figure(figsize=(12, 8))
 
-st.pyplot(plt.plot(data['date'], data['DailyCases_LA'], label='Daily Cases (LA)', linestyle='-', marker='o')
-st.pyplotplt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linestyle='-', marker='o')
+plt.plot(data['date'], data['DailyCases_LA'], label='Daily Cases (LA)', linestyle='-', marker='o')
+plt.plot(data['date'], data['DailyDeaths_LA'], label='Daily Deaths (LA)', linestyle='-', marker='o')
 
 # Plot rolling averages for better trend visualization
 rolling_window = 7  # 7-day rolling average
